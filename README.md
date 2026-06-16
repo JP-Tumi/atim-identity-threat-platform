@@ -366,8 +366,6 @@ python "data/Live Identity Ai Simulator.py"
 
 The simulator will bootstrap the ML baseline automatically on first run. Incidents and SOAR tickets are saved to `data/incidents/` and `data/soar_actions/` as they are generated.
 
-Incidents and SOAR tickets are saved to `data/incidents/` and `data/soar_actions/`.
-
 ---
 
 ## Status
