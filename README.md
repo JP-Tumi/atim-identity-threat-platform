@@ -387,3 +387,4 @@ The simulator will bootstrap the ML baseline automatically on first run. Inciden
 
 - [Memory Triage Script](https://github.com/JP-Tumi/memory-triage-script): Volatility-based endpoint forensics, deployable via CrowdStrike RTR
 - [SOC Log Review Assistant](https://github.com/JP-Tumi/soc-log-assistant): LLM-powered triage for SOC log analysis
+
