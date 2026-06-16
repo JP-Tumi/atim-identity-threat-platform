@@ -1,0 +1,219 @@
+{
+  "incident_id": "INC-20260614221716-5575",
+  "created_at": "2026-06-14T22:17:16.963767Z",
+  "incident_type": "Possible stolen session/token reuse",
+  "priority": "High",
+  "status": "Open",
+  "assigned_to": "IT Support / IR",
+  "summary": "Identity attack story correlated for bob.vendor@partner.com",
+  "user": "bob.vendor@partner.com",
+  "account_type": "third_party",
+  "user_group": "vendor_support",
+  "source_ip": "185.220.101.45",
+  "country": "CN",
+  "device_id": "unknown-device-4862",
+  "device_trust": "unmanaged",
+  "session_id": "sess-15934",
+  "token_id": "tok-929660",
+  "risk_score": 330,
+  "risk_level": "HIGH",
+  "ml_score": 90,
+  "reasons": [
+    "ML baseline flagged this event as anomalous",
+    "IP is listed as malicious",
+    "Login country is unusual for this user",
+    "User agent is suspicious",
+    "Device is unmanaged or newly observed",
+    "Action is unusual for this user/group",
+    "Third-party account increases risk",
+    "High-risk post-authentication or token/session event observed",
+    "Attack sequence contains 9 known AITM/post-compromise steps",
+    "MFA failure followed by MFA success observed",
+    "New device detected within same attack story",
+    "Session reuse detected within same attack story",
+    "Inbox rule created after suspicious identity activity",
+    "OAuth consent granted after suspicious identity activity"
+  ],
+  "related_users": [
+    "bob.vendor@partner.com"
+  ],
+  "related_ips": [
+    "185.220.101.45",
+    "81.2.69.144"
+  ],
+  "related_devices": [
+    "managed-device-865",
+    "unknown-device-4862"
+  ],
+  "related_countries": [
+    "CN",
+    "GB",
+    "RU"
+  ],
+  "matched_attack_steps": [
+    "user.mfa.okta_verify.challenge.failed",
+    "user.mfa.okta_verify.challenge.success",
+    "device.assurance.new_device_detected",
+    "user.session.reuse.detected",
+    "UserLoggedIn",
+    "MailItemsAccessed",
+    "InboxRuleCreated",
+    "FileDownloaded",
+    "OAuthAppConsentGranted"
+  ],
+  "timeline": [
+    {
+      "timestamp": "2026-06-14T22:17:13.348136Z",
+      "source": "okta",
+      "event_type": "user.session.start",
+      "user": "bob.vendor@partner.com",
+      "ip": "81.2.69.144",
+      "country": "GB",
+      "device_id": "managed-device-865",
+      "app": "Okta",
+      "action": "session_started",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-06-14T22:17:13.348228Z",
+      "source": "okta",
+      "event_type": "user.mfa.okta_verify.challenge.failed",
+      "user": "bob.vendor@partner.com",
+      "ip": "185.220.101.45",
+      "country": "CN",
+      "device_id": "unknown-device-4862",
+      "app": "Okta",
+      "action": "mfa_challenge_failed",
+      "status": "failure"
+    },
+    {
+      "timestamp": "2026-06-14T22:17:13.348253Z",
+      "source": "okta",
+      "event_type": "user.mfa.okta_verify.challenge.failed",
+      "user": "bob.vendor@partner.com",
+      "ip": "185.220.101.45",
+      "country": "CN",
+      "device_id": "unknown-device-4862",
+      "app": "Okta",
+      "action": "mfa_challenge_failed",
+      "status": "failure"
+    },
+    {
+      "timestamp": "2026-06-14T22:17:13.348276Z",
+      "source": "okta",
+      "event_type": "user.mfa.okta_verify.challenge.success",
+      "user": "bob.vendor@partner.com",
+      "ip": "185.220.101.45",
+      "country": "CN",
+      "device_id": "unknown-device-4862",
+      "app": "Okta",
+      "action": "mfa_challenge_success",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-06-14T22:17:13.348303Z",
+      "source": "okta",
+      "event_type": "device.assurance.new_device_detected",
+      "user": "bob.vendor@partner.com",
+      "ip": "185.220.101.45",
+      "country": "CN",
+      "device_id": "unknown-device-4862",
+      "app": "Okta",
+      "action": "new_device_added",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-06-14T22:17:13.348321Z",
+      "source": "okta",
+      "event_type": "user.session.reuse.detected",
+      "user": "bob.vendor@partner.com",
+      "ip": "185.220.101.45",
+      "country": "CN",
+      "device_id": "unknown-device-4862",
+      "app": "Okta",
+      "action": "possible_token_reuse",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-06-14T22:17:13.930815Z",
+      "source": "m365",
+      "event_type": "UserLoginFailed",
+      "user": "bob.vendor@partner.com",
+      "ip": "185.220.101.45",
+      "country": "RU",
+      "device_id": "unknown-device-4862",
+      "app": "Microsoft 365",
+      "action": "login_failed",
+      "status": "failure"
+    },
+    {
+      "timestamp": "2026-06-14T22:17:13.930846Z",
+      "source": "m365",
+      "event_type": "UserLoggedIn",
+      "user": "bob.vendor@partner.com",
+      "ip": "185.220.101.45",
+      "country": "RU",
+      "device_id": "unknown-device-4862",
+      "app": "Microsoft 365",
+      "action": "login",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-06-14T22:17:13.930863Z",
+      "source": "m365",
+      "event_type": "MailItemsAccessed",
+      "user": "bob.vendor@partner.com",
+      "ip": "185.220.101.45",
+      "country": "RU",
+      "device_id": "unknown-device-4862",
+      "app": "Exchange Online",
+      "action": "mail_access",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-06-14T22:17:13.930877Z",
+      "source": "m365",
+      "event_type": "InboxRuleCreated",
+      "user": "bob.vendor@partner.com",
+      "ip": "185.220.101.45",
+      "country": "RU",
+      "device_id": "unknown-device-4862",
+      "app": "Exchange Online",
+      "action": "create_inbox_rule",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-06-14T22:17:13.930891Z",
+      "source": "m365",
+      "event_type": "FileDownloaded",
+      "user": "bob.vendor@partner.com",
+      "ip": "185.220.101.45",
+      "country": "RU",
+      "device_id": "unknown-device-4862",
+      "app": "SharePoint",
+      "action": "mass_file_download",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-06-14T22:17:13.930904Z",
+      "source": "m365",
+      "event_type": "OAuthAppConsentGranted",
+      "user": "bob.vendor@partner.com",
+      "ip": "185.220.101.45",
+      "country": "RU",
+      "device_id": "unknown-device-4862",
+      "app": "Entra ID",
+      "action": "oauth_consent_granted",
+      "status": "success"
+    }
+  ],
+  "requested_actions": [
+    "Revoke active sessions",
+    "Force password reset",
+    "Require MFA re-authentication",
+    "Review same session_id/token_id",
+    "Investigate related users and IPs",
+    "Escalate to IR",
+    "Notify third-party/vendor owner"
+  ]
+}
